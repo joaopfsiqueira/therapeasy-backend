@@ -1,13 +1,12 @@
-import { Repository } from 'typeorm';
-import { AppDataSource } from '../../data-source';
+import { DataSource, Repository } from 'typeorm';
 import { Users } from './user.entity';
 import { IUserRepository } from '../../interfaces/user/user.repository.interface';
 
 class UserRepository implements IUserRepository {
 	AccountRepository: Repository<Users>;
 
-	constructor() {
-		this.AccountRepository = AppDataSource.getRepository(Users);
+	constructor(AccountRepository: DataSource) {
+		this.AccountRepository = AccountRepository.getRepository(Users);
 	}
 }
 
