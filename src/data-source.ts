@@ -7,10 +7,10 @@ class AppDataSource {
 
 	constructor() {
 		this.DataSource = new DataSource({
-			type: 'postgres',
-			host: 'postgres',
+			type: 'mysql',
+			host: 'localhost',
 			port: 5432,
-			username: 'postgres',
+			username: 'mysql',
 			password: 'password',
 			database: 'therapy',
 			synchronize: true,
