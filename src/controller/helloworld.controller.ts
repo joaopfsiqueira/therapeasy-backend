@@ -1,18 +1,14 @@
 import { Request, Response, Router } from 'express';
 import { Http } from '../utils/enum/http';
 import { IController } from '../interfaces/controller.interface';
-// import { IHelloWorldService } from 'helloworld.service.ts'
 
 class HelloWorldController implements IController {
 	public router: Router;
 	private readonly basePath = '/';
-	// private service: IHelloWorldService;
 
-	//constructor(service: IHelloWorldService)
 	constructor() {
 		this.router = Router();
 		this.initializeRouter();
-		// this.service = service; aqui eu atribuiria o service que eu importaria la de cima no atributo da classe, para ter contexto dentro dela e usar com o this.service, é a abstração da classe, que fornece acesso aos métodos publicos dela.
 	}
 
 	//método criado para inicializar nova subrota!
