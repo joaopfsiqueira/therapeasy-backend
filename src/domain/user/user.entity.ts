@@ -30,10 +30,10 @@ export class Users {
 	@PrimaryGeneratedColumn('increment')
 	id: number = 0;
 
-	@Column({ name: 'login', unique: true })
+	@Column({ name: 'login', unique: true, type: 'varchar', length: 50 })
 	login: string;
 
-	@Column({ name: 'password' })
+	@Column({ name: 'password', type: 'varchar', length: 255 })
 	password: string;
 
 	@BeforeInsert() //antes de inserir a senha
@@ -42,19 +42,19 @@ export class Users {
 		this.password = bcrypt.hashSync(this.password, 8);
 	}
 
-	@Column({ name: 'email' })
+	@Column({ name: 'email', unique: true, type: 'varchar', length: 100 })
 	email: string;
 
-	@Column({ name: 'cpf' })
+	@Column({ name: 'cpf', unique: true, type: 'varchar', length: 11 })
 	cpf: string;
 
-	@Column({ name: 'gender' })
+	@Column({ name: 'gender', type: 'varchar', length: 1 })
 	gender: string;
 
-	@Column({ name: 'type' })
+	@Column({ name: 'type', type: 'varchar', length: 15, nullable: true })
 	type: string;
 
-	@Column({ type: 'timestamptz' }) // Recommended
+	@Column({ type: 'datetime' })
 	birth_date: Date;
 
 	@Column({ name: 'created_at', type: 'datetime', precision: 0, nullable: false })
