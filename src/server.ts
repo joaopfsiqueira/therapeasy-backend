@@ -1,12 +1,22 @@
 import 'dotenv/config'; //responsável por importar as variáveis de ambiente do .env e colocar na app.
 import HelloWorldController from './controller/helloworld.controller';
 import App from './app';
+import AppDataSource from './data-source';
 
 /* Main Function, responsável por juntar TODAS as abstrações (instâncias) e usa-las em seus serviços que esperam receber uma instância de uma classe abstrata.
 
  Ouuuu, simplesmente rodar a conexão de um banco, executar uma função, etc.
  */
 export async function server(): Promise<void> {
+	/**
+	 * Db Connection
+	 */
+	const DbConnection = new AppDataSource();
+
+	DbConnection.DataSource.initialize().then(async () => {
+		console.log('Connection to database established');
+	});
+
 	/**
 	 * Instance of Connections
 	 */
