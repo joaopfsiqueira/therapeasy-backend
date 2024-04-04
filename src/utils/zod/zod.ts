@@ -16,7 +16,7 @@ export const UserSchema = z.object({
     cpf: z
         .string({
             required_error: 'CPF is required',
-            invalid_type_error: 'CPF must be a number',
+            invalid_type_error: 'CPF must be a string',
         })
         .length(11, { message: 'CPF must have 11 characters' }),
     gender: z
