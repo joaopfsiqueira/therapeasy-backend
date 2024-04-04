@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+    therapy-easy:
+        image: therapy-easy:latest
+        container_name: therapy-easy
+        network_mode: host # usando host para não precisar usar a tag port.
+        # environment:
+        #     - test=value
+        build:
+            context: .
+            # target: development # Target is a form os docker compose define how get the part of build based in env
+            dockerfile: Dockerfile
+        expose:
+            - '2000'
