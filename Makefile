@@ -13,3 +13,6 @@ down:
 restart:
 		docker-compose down
 		docker compose up -d
+
+push:
+	docker-compose push therapy-easy
