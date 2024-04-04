@@ -13,14 +13,18 @@ export const UserSchema = z.object({
         required_error: 'Email is required',
         invalid_type_error: 'Email must be a string',
     }),
-    cpf: z.number({
-        required_error: 'CPF is required',
-        invalid_type_error: 'CPF must be a number',
-    }),
-    gender: z.string({
-        required_error: 'Gender is required',
-        invalid_type_error: 'Gender must be a string',
-    }),
+    cpf: z
+        .string({
+            required_error: 'CPF is required',
+            invalid_type_error: 'CPF must be a number',
+        })
+        .length(11, { message: 'CPF must have 11 characters' }),
+    gender: z
+        .string({
+            required_error: 'Gender is required',
+            invalid_type_error: 'Gender must be a string',
+        })
+        .length(1, { message: 'Gender must have 1 character, M or F' }),
     type: z
         .string({
             invalid_type_error: 'Type must be a string',
