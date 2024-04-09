@@ -7,7 +7,7 @@ class AppDataSource {
 
     constructor() {
         this.DataSource = new DataSource({
-            type: process.env.DS_TYPE,
+            type: 'mysql',
             host: process.env.DS_HOST,
             port: 3306,
             username: process.env.DS_USERNAME,
