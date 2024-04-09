@@ -1,0 +1,25 @@
+name: 'Netlify Deploy'
+
+on:
+    pull_request:
+        branches:
+            - main
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        container: node:20
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2 # clona toda a branch e joga na máquina q vai rodar a pipe.
+
+            - name: Setup NodeJS
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: 'npm'
+
+            - name: run install, build and start
+              run: |
+                  npm install
+                  npm run build
+                  node dist/server.js
