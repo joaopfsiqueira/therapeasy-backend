@@ -5,12 +5,11 @@ on:
         branches:
             - main
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-latest
-        container: node:20
         steps:
-            - name: Checkout
-              uses: actions/checkout@v2 # clona toda a branch e joga na máquina q vai rodar a pipe.
+            - name: Repository Checkout
+              uses: actions/checkout@v4 # clona toda a branch e joga na máquina q vai rodar a pipe.
 
             - name: Setup NodeJS
               uses: actions/setup-node@v4
