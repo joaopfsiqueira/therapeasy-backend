@@ -20,12 +20,6 @@ jobs:
             - name: Repository Checkout
               uses: actions/checkout@v4 # clona toda a branch e joga na máquina q vai rodar a pipe.
 
-            # Acessando variáveis do ambiente do GitHub Actions
-            - name: Use Environment Variables
-              run: |
-                  echo "Secret: ${{ secrets.DS_TYPE }}"
-                  echo "Variable: $PORT"
-
             - name: Setup NodeJS
               uses: actions/setup-node@v4
               with:
@@ -37,9 +31,10 @@ jobs:
                   npm install
                   npm run build
                   node dist/server.js
-            # - name: Deploy Heroku
-            #   uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
-            #   with:
-            #       heroku_api_key: ${{secrets.HEROKU_TOKEN}}
-            #       heroku_app_name: 'therapyeasy' #Must be unique in Heroku
-            #       heroku_email: 'joaopfsiqueiraa@gmail.com'
+
+            - name: Deploy Heroku
+              uses: akhileshns/heroku-deploy@v3.13.15 # This is the action
+              with:
+                  heroku_api_key: ${{secrets.HEROKU_TOKEN}}
+                  heroku_app_name: 'therapyeasy' #Must be unique in Heroku
+                  heroku_email: 'joaopfsiqueiraa@gmail.com'
