@@ -9,8 +9,8 @@ jobs:
         runs-on: ubuntu-latest
         environment: production
         env:
-            PORT: $PORT
-            TIMEZONE: $TIMEZONE
+            PORT: ${{vars.PORT}}
+            TIMEZONE: ${{vars.TIMEZONE}}
             DS_HOST: ${{ secrets.DS_HOST }}
             DS_TYPE: ${{ secrets.DS_TYPE }}
             DS_USERNAME: ${{ secrets.DS_USERNAME }}
