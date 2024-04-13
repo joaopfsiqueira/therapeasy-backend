@@ -1,14 +1,15 @@
 name: 'Deploy'
 
+# gatilho para rodar a pipe
 on:
     pull_request:
         branches:
             - main
 jobs:
     build-and-deploy:
-        runs-on: ubuntu-latest
-        environment: production
-        env:
+        runs-on: ubuntu-latest # maquina em que vai rodar o deploy
+        environment: production # acessando o environment criado no github
+        env: # subindo env para o container
             PORT: ${{vars.PORT}}
             TIMEZONE: ${{vars.TIMEZONE}}
             DS_HOST: ${{ secrets.DS_HOST }}
@@ -38,3 +39,11 @@ jobs:
                   heroku_api_key: ${{secrets.HEROKU_TOKEN}}
                   heroku_app_name: 'therapyeasy' #Must be unique in Heroku
                   heroku_email: 'joaopfsiqueiraa@gmail.com'
+              env:
+                  PORT: ${{vars.PORT}}
+                  TIMEZONE: ${{vars.TIMEZONE}}
+                  DS_HOST: ${{ secrets.DS_HOST }}
+                  DS_TYPE: ${{ secrets.DS_TYPE }}
+                  DS_USERNAME: ${{ secrets.DS_USERNAME }}
+                  DS_PASSWORD: ${{ secrets.DS_PASSWORD }}
+                  DS_DATABASE: ${{ secrets.DS_DATABASE }}
