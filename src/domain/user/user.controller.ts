@@ -1,4 +1,4 @@
-import { UserSchema } from '../../utils/zod/zod'
+import { UserSchema } from '../../utils/zod/user.zod'
 import { Request, Response, Router } from 'express'
 import { Http } from '../../utils/enum/http'
 import { IUserService } from '../../interfaces/user/user.service.interface'
