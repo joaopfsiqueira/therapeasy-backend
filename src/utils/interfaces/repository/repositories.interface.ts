@@ -1,4 +1,4 @@
-import { Users } from '../../domain/user/user.entity'
+import { Users } from '../../../domain/user/user.entity'
 import { Repository } from 'typeorm'
 
 export interface IRepositories {

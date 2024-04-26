@@ -18,6 +18,20 @@ class UserService implements IUserService {
             }
         }
     }
+
+    async getUserInformation(username: string): Promise<Users> {
+        const user = await this.repositories.UserRepository.findOne({
+            where: {
+                username: username,
+            },
+        })
+
+        if (!user) {
+            throw new Error('Usuário não encontrado')
+        }
+
+        return user
+    }
 }
 
 export default UserService
