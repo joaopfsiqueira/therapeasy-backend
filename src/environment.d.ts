@@ -8,6 +8,7 @@ declare global {
             readonly DS_USERNAME: string
             readonly DS_PASSWORD: string
             readonly DS_DATABASE: string
+            readonly SECRET_KEY: string
         }
     }
 }

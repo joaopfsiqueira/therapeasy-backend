@@ -17,6 +17,7 @@ jobs:
             DS_USERNAME: ${{ secrets.DS_USERNAME }}
             DS_PASSWORD: ${{ secrets.DS_PASSWORD }}
             DS_DATABASE: ${{ secrets.DS_DATABASE }}
+            SECRET_KEY: ${{ secrets.SECRET_KEY }}
         steps:
             - name: Repository Checkout
               uses: actions/checkout@v4 # clona toda a branch e joga na máquina q vai rodar a pipe.
@@ -47,3 +48,4 @@ jobs:
                   HD_DS_USERNAME: ${{ secrets.DS_USERNAME }}
                   HD_DS_PASSWORD: ${{ secrets.DS_PASSWORD }}
                   HD_DS_DATABASE: ${{ secrets.DS_DATABASE }}
+                  HD_SECRET_KEY: ${{ secrets.SECRET_KEY }}

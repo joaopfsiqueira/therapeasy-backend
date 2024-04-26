@@ -1,10 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate } from 'typeorm'
-import bcrypt = require('bcrypt')
+import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm'
 
 @Entity()
 export class Users {
     constructor(
-        login: string,
+        username: string,
         nome: string,
         password: string,
         email: string,
@@ -16,7 +15,7 @@ export class Users {
         updated_at: Date,
         active: boolean
     ) {
-        this.login = login
+        this.username = username
         this.nome = nome
         this.password = password
         this.email = email
@@ -29,28 +28,26 @@ export class Users {
         this.active = active
     }
 
+    @Index('id_idx')
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
-    @Column({ name: 'login', unique: true, type: 'varchar', length: 50 })
-    login: string
+    @Index('username_idx', { unique: true })
+    @Column({ name: 'username', type: 'varchar', length: 50 })
+    username: string
 
-    @Column({ name: 'nome', unique: true, type: 'varchar', length: 255 })
+    @Column({ name: 'nome', type: 'varchar', length: 255 })
     nome: string
 
-    @Column({ name: 'password', type: 'varchar', length: 255 })
+    @Column({ type: 'varchar', length: 255 })
     password: string
 
-    @BeforeInsert() //antes de inserir a senha
-    @BeforeUpdate() // depois de inserir a senha (caso precisa atualizar a senha.)
-    hashPassword() {
-        this.password = bcrypt.hashSync(this.password, 8)
-    }
-
-    @Column({ name: 'email', unique: true, type: 'varchar', length: 100 })
+    @Index('email_idx', { unique: true })
+    @Column({ name: 'email', type: 'varchar', length: 100 })
     email: string
 
-    @Column({ name: 'cpf', unique: true, type: 'varchar', length: 11 })
+    @Index('cpf_idx', { unique: true })
+    @Column({ name: 'cpf', type: 'varchar', length: 11 })
     cpf: string
 
     @Column({ name: 'gender', type: 'varchar', length: 1 })

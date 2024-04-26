@@ -9,6 +9,7 @@ export function ErrorZodFormat(errors: ZodIssue[]): string {
         errorZod += error.message + ', '
     })
 
+    // removendo a última vírgula e espaço
     errorZod = errorZod.slice(0, errorZod.length - 2)
     logger.log('info', errorZod)
 

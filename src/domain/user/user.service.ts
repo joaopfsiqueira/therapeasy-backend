@@ -1,12 +1,14 @@
-import { IRepositories } from '../../interfaces/repository/repositories.interface'
-import { IUserService } from '../../interfaces/user/user.service.interface'
+import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
+import { IUserService } from '../../utils/interfaces/user/user.service.interface'
 import { Users } from './user.entity'
+import * as bcrypt from 'bcrypt'
 
 class UserService implements IUserService {
     constructor(private repositories: IRepositories) {}
 
     async create(body: Users): Promise<Users> {
         try {
+            body.password = await bcrypt.hash(body.password, 8)
             return await this.repositories.UserRepository.save(body)
         } catch (error) {
             if (error instanceof Error) {
@@ -15,6 +17,20 @@ class UserService implements IUserService {
                 throw new Error(String(error))
             }
         }
+    }
+
+    async getUserInformation(username: string): Promise<Users> {
+        const user = await this.repositories.UserRepository.findOne({
+            where: {
+                username: username,
+            },
+        })
+
+        if (!user) {
+            throw new Error('Usuário não encontrado')
+        }
+
+        return user
     }
 }
 
