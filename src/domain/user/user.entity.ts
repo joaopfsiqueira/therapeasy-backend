@@ -50,7 +50,7 @@ export class Users {
     @Column({ name: 'cpf', type: 'varchar', length: 11 })
     cpf: string
 
-    @Column({ name: 'gender', type: 'varchar', length: 1 })
+    @Column({ name: 'gender', type: 'varchar', length: 9 })
     gender: string
 
     @Column({ name: 'type', type: 'varchar', length: 15, nullable: true })
