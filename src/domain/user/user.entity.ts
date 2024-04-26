@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BeforeUpdate } from 'typeorm'
-import bcrypt = require('bcrypt')
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 
 @Entity()
 export class Users {
@@ -35,17 +34,11 @@ export class Users {
     @Column({ name: 'login', unique: true, type: 'varchar', length: 50 })
     login: string
 
-    @Column({ name: 'nome', unique: true, type: 'varchar', length: 255 })
+    @Column({ name: 'nome', type: 'varchar', length: 255 })
     nome: string
 
-    @Column({ name: 'password', type: 'varchar', length: 255 })
+    @Column({ type: 'varchar', length: 255 })
     password: string
-
-    @BeforeInsert() //antes de inserir a senha
-    @BeforeUpdate() // depois de inserir a senha (caso precisa atualizar a senha.)
-    hashPassword() {
-        this.password = bcrypt.hashSync(this.password, 8)
-    }
 
     @Column({ name: 'email', unique: true, type: 'varchar', length: 100 })
     email: string
