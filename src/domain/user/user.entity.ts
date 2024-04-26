@@ -32,8 +32,8 @@ export class Users {
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
-    @Index('username_idx')
-    @Column({ name: 'username', unique: true, type: 'varchar', length: 50 })
+    @Index('username_idx', { unique: true })
+    @Column({ name: 'username', type: 'varchar', length: 50 })
     username: string
 
     @Column({ name: 'nome', type: 'varchar', length: 255 })
@@ -42,12 +42,12 @@ export class Users {
     @Column({ type: 'varchar', length: 255 })
     password: string
 
-    @Index('email_idx')
-    @Column({ name: 'email', unique: true, type: 'varchar', length: 100 })
+    @Index('email_idx', { unique: true })
+    @Column({ name: 'email', type: 'varchar', length: 100 })
     email: string
 
-    @Index('cpf_idx')
-    @Column({ name: 'cpf', unique: true, type: 'varchar', length: 11 })
+    @Index('cpf_idx', { unique: true })
+    @Column({ name: 'cpf', type: 'varchar', length: 11 })
     cpf: string
 
     @Column({ name: 'gender', type: 'varchar', length: 1 })
