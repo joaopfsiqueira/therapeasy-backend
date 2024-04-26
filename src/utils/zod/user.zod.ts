@@ -5,6 +5,10 @@ export const UserSchema = z.object({
         required_error: 'Login is required',
         invalid_type_error: 'Login must be a string',
     }),
+    nome: z.string({
+        required_error: 'Nome is required',
+        invalid_type_error: 'Nome must be a string',
+    }),
     password: z.string({
         required_error: 'Password is required',
         invalid_type_error: 'Password must be a string',
