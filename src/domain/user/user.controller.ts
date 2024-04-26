@@ -1,8 +1,8 @@
 import { UserSchema } from '../../utils/zod/user.zod'
 import { Request, Response, Router } from 'express'
 import { Http } from '../../utils/enum/http'
-import { IUserService } from '../../interfaces/user/user.service.interface'
-import { IController } from '../../interfaces/controller.interface'
+import { IUserService } from '../../utils/interfaces/user/user.service.interface'
+import { IController } from '../../utils/interfaces/controller.interface'
 
 import { ErrorZodFormat } from '../../utils/errors/zod.error'
 

@@ -1,6 +1,6 @@
 import { DataSource, Repository } from 'typeorm'
 import { Users } from '../domain/user/user.entity'
-import { IRepositories } from '../interfaces/repository/repositories.interface'
+import { IRepositories } from '../utils/interfaces/repository/repositories.interface'
 
 // single responsibility principle, essa classe instância e inicializa os repositórios
 // Dependency Inversion, não tem, não depende de abstrações.
