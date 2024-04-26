@@ -4,7 +4,7 @@ import { Http } from '../../utils/enum/http'
 import { IUserService } from '../../interfaces/user/user.service.interface'
 import { IController } from '../../interfaces/controller.interface'
 
-import { ErrorUserFormat } from '../../utils/errors/zod.user.error'
+import { ErrorZodFormat } from '../../utils/errors/zod.error'
 
 class UserController implements IController {
     public router: Router
@@ -26,7 +26,7 @@ class UserController implements IController {
         try {
             const user = await UserSchema.safeParseAsync(_req.body) //utilizando o safe parse porque o safeparse não da um throw no erro, ele retorna como mensagem e ai eu faço o que eu bem entender.
             if (!user.success) {
-                const error = ErrorUserFormat(user.error.errors)
+                const error = ErrorZodFormat(user.error.errors)
                 return res.status(Http.BAD_REQUEST).send(error)
             }
             await this.service.create(_req.body)
