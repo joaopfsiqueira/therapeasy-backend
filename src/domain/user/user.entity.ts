@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm'
 
 @Entity()
 export class Users {
@@ -28,9 +28,11 @@ export class Users {
         this.active = active
     }
 
+    @Index('id_idx')
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
+    @Index('username_idx')
     @Column({ name: 'username', unique: true, type: 'varchar', length: 50 })
     username: string
 
@@ -40,9 +42,11 @@ export class Users {
     @Column({ type: 'varchar', length: 255 })
     password: string
 
+    @Index('email_idx')
     @Column({ name: 'email', unique: true, type: 'varchar', length: 100 })
     email: string
 
+    @Index('cpf_idx')
     @Column({ name: 'cpf', unique: true, type: 'varchar', length: 11 })
     cpf: string
 
