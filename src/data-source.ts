@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import 'reflect-metadata' // serve para atualizar os metadados da tabela.
 import { DataSource } from 'typeorm'
 import { Users } from './domain/user/user.entity'
 

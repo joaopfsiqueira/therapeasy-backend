@@ -3,8 +3,10 @@ import HelloWorldController from './controller/helloworld.controller'
 import App from './app'
 import AppDataSource from './data-source'
 import UserService from './domain/user/user.service'
-import UserRepository from './domain/user/user.repository'
 import UserController from './domain/user/user.controller'
+import AuthService from './domain/auth/auth.service'
+import AuthController from './domain/auth/auth.controller'
+import Repositories from './repository/repositories'
 
 /* Main Function, responsável por juntar TODAS as abstrações (instâncias) e usa-las em seus serviços que esperam receber uma instância de uma classe abstrata.
 
@@ -31,17 +33,18 @@ export async function server(): Promise<void> {
      * Inicialização de Repositórios
      */
 
-    const userRepository = new UserRepository(DbConnection.DataSource)
+    const repositories = new Repositories(DbConnection.DataSource) //acessando o atributo publico da classe Repositories
 
     /**
      * Inicilização das Services
      */
-    const userService = new UserService(userRepository)
+    const userService = new UserService(repositories)
+    const authService = new AuthService(repositories)
 
     /**
      * Inicialização das Controllers
      */
-    const controllers = [new HelloWorldController(), new UserController(userService)]
+    const controllers = [new HelloWorldController(), new UserController(userService), new AuthController(authService)]
     // const userController = new UserController(userService);
 
     /**
