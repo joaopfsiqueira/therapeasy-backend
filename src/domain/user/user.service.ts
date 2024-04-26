@@ -1,5 +1,5 @@
-import { IRepositories } from '../../interfaces/repository/repositories.interface'
-import { IUserService } from '../../interfaces/user/user.service.interface'
+import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
+import { IUserService } from '../../utils/interfaces/user/user.service.interface'
 import { Users } from './user.entity'
 import * as bcrypt from 'bcrypt'
 

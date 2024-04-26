@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 @Entity()
 export class Users {
     constructor(
-        login: string,
+        username: string,
         nome: string,
         password: string,
         email: string,
@@ -15,7 +15,7 @@ export class Users {
         updated_at: Date,
         active: boolean
     ) {
-        this.login = login
+        this.username = username
         this.nome = nome
         this.password = password
         this.email = email
@@ -31,8 +31,8 @@ export class Users {
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
-    @Column({ name: 'login', unique: true, type: 'varchar', length: 50 })
-    login: string
+    @Column({ name: 'username', unique: true, type: 'varchar', length: 50 })
+    username: string
 
     @Column({ name: 'nome', type: 'varchar', length: 255 })
     nome: string
