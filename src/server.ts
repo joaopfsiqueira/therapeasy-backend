@@ -2,8 +2,8 @@ import 'dotenv/config' //responsável por importar as variáveis de ambiente do 
 import HelloWorldController from './controller/helloworld.controller'
 import App from './app'
 import AppDataSource from './data-source'
-import UserService from './domain/user/user.service'
-import UserController from './domain/user/user.controller'
+import PeopleService from './domain/people/people.service'
+import PeopleController from './domain/people/people.controller'
 import AuthService from './domain/auth/auth.service'
 import AuthController from './domain/auth/auth.controller'
 import Repositories from './repository/repositories'
@@ -40,14 +40,14 @@ export async function server(): Promise<void> {
     /**
      * Inicilização das Services
      */
-    const userService = new UserService(repositories)
+    const peopleService = new PeopleService(repositories)
     const authService = new AuthService(repositories)
 
     /**
      * Inicialização das Controllers
      */
-    const controllers = [new HelloWorldController(), new UserController(userService, authMiddleware), new AuthController(authService)]
-    // const userController = new UserController(userService);
+    const controllers = [new HelloWorldController(), new PeopleController(peopleService, authMiddleware), new AuthController(authService)]
+    // const userController = new PeopleController(peopleService);
 
     /**
      * Inicialização do Servidor, o servidor deve receber as controllers a serem carregadas

@@ -1,12 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm'
 
 @Entity()
-export class Users {
+export class People {
     constructor(
-        username: string,
         nome: string,
-        password: string,
-        email: string,
         cpf: string,
         gender: string,
         type: string,
@@ -15,10 +12,7 @@ export class Users {
         updated_at: Date,
         active: boolean
     ) {
-        this.username = username
         this.nome = nome
-        this.password = password
-        this.email = email
         this.cpf = cpf
         this.gender = gender
         this.type = type
@@ -32,19 +26,19 @@ export class Users {
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
-    @Index('username_idx', { unique: true })
-    @Column({ name: 'username', type: 'varchar', length: 50 })
-    username: string
+    // @Index('username_idx', { unique: true })
+    // @Column({ name: '', type: 'varchar', length: 50 })
+    // : string
 
     @Column({ name: 'nome', type: 'varchar', length: 255 })
     nome: string
 
-    @Column({ type: 'varchar', length: 255 })
-    password: string
+    // @Column({ type: 'varchar', length: 255 })
+    // password: string
 
-    @Index('email_idx', { unique: true })
-    @Column({ name: 'email', type: 'varchar', length: 100 })
-    email: string
+    // @Index('email_idx', { unique: true })
+    // @Column({ name: 'email', type: 'varchar', length: 100 })
+    // email: string
 
     @Index('cpf_idx', { unique: true })
     @Column({ name: 'cpf', type: 'varchar', length: 11 })

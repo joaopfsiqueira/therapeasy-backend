@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const UserSchema = z.object({
+export const PeopleSchema = z.object({
     username: z.string({
         required_error: 'Username is required',
         invalid_type_error: 'Username must be a string',
@@ -23,12 +23,10 @@ export const UserSchema = z.object({
             invalid_type_error: 'CPF must be a string',
         })
         .length(11, { message: 'CPF must have 11 characters' }),
-    gender: z
-        .string({
-            required_error: 'Gender is required',
-            invalid_type_error: 'Gender must be a string',
-        })
-        .length(1, { message: 'Gender must have 1 character, M or F' }),
+    gender: z.string({
+        required_error: 'Gender is required',
+        invalid_type_error: 'Gender must be a string',
+    }),
     type: z
         .string({
             invalid_type_error: 'Type must be a string',

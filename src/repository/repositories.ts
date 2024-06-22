@@ -1,5 +1,5 @@
 import { DataSource, Repository } from 'typeorm'
-import { Users } from '../domain/user/user.entity'
+import { People } from '../domain/people/people.entity'
 import { IRepositories } from '../utils/interfaces/repository/repositories.interface'
 
 // single responsibility principle, essa classe instância e inicializa os repositórios
@@ -8,10 +8,10 @@ import { IRepositories } from '../utils/interfaces/repository/repositories.inter
 // Liskov Substitution, não tem. Não tenho classes herdadas que fazem o papel da repositores, embora eu possa fazer isso, preferi manter com atributos públicos para cada repository
 // Open/closed principle, Não! Eu não posso adicionar novos repositórios sem precisar alterar essa classe. Teoricamente eu preciso adicionar um novo atributo.
 class Repositories implements IRepositories {
-    UserRepository: Repository<Users>
+    PeopleRepository: Repository<People>
 
     constructor(DataSource: DataSource) {
-        this.UserRepository = DataSource.getRepository(Users)
+        this.PeopleRepository = DataSource.getRepository(People)
     }
 }
 

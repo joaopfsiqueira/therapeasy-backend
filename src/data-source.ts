@@ -1,6 +1,6 @@
 import 'reflect-metadata' // serve para atualizar os metadados da tabela.
 import { DataSource } from 'typeorm'
-import { Users } from './domain/user/user.entity'
+import { People } from './domain/people/people.entity'
 
 class AppDataSource {
     DataSource: DataSource
@@ -15,7 +15,7 @@ class AppDataSource {
             database: process.env.DS_DATABASE,
             synchronize: true,
             logging: false,
-            entities: [Users],
+            entities: [People],
             migrations: [],
             subscribers: [],
         })

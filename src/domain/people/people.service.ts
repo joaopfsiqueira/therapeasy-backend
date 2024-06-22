@@ -1,6 +1,6 @@
 import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
-import { IUserService } from '../../utils/interfaces/user/user.service.interface'
-import { Users } from './user.entity'
+import { IUserService } from '../../utils/interfaces/people/people.service.interface'
+import { Users } from './people.entity'
 import * as bcrypt from 'bcrypt'
 
 class UserService implements IUserService {
