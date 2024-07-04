@@ -10,6 +10,8 @@ import Repositories from './repository/repositories'
 import AuthMiddleware from './middleware/auth.middleware'
 import DoctorService from './domain/doctors/doctor.service'
 import DoctorController from './domain/doctors/doctor.controller'
+import UserController from './domain/user/user.controller'
+import UserService from './domain/user/user.service'
 
 /* Main Function, responsável por juntar TODAS as abstrações (instâncias) e usa-las em seus serviços que esperam receber uma instância de uma classe abstrata.
 
@@ -45,6 +47,7 @@ export async function server(): Promise<void> {
     const peopleService = new PeopleService(repositories)
     const authService = new AuthService(repositories)
     const doctorService = new DoctorService(repositories)
+    const userService = new UserService(repositories)
 
     /**
      * Inicialização das Controllers
@@ -54,6 +57,7 @@ export async function server(): Promise<void> {
         new PeopleController(peopleService, authMiddleware),
         new AuthController(authService),
         new DoctorController(doctorService, authMiddleware),
+        new UserController(userService, authMiddleware),
     ]
     // const userController = new PeopleController(peopleService);
 
