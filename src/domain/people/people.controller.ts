@@ -7,7 +7,7 @@ import { IController } from '../../utils/interfaces/controller.interface'
 import { ErrorZodFormat } from '../../utils/errors/zod.error'
 import { IAuthMiddleware } from '../../utils/interfaces/middleware/auth.middleware.interface'
 
-class UserController implements IController {
+class PeopleController implements IController {
     public router: Router
     private readonly basePath = '/user'
 
@@ -59,4 +59,4 @@ class UserController implements IController {
     }
 }
 
-export default UserController
+export default PeopleController
