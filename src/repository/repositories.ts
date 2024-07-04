@@ -1,6 +1,7 @@
 import { DataSource, Repository } from 'typeorm'
 import { People } from '../domain/people/people.entity'
 import { IRepositories } from '../utils/interfaces/repository/repositories.interface'
+import { Doctor } from 'src/domain/doctors/doctor.entity'
 
 // single responsibility principle, essa classe instância e inicializa os repositórios
 // Dependency Inversion, não tem, não depende de abstrações.
@@ -9,9 +10,11 @@ import { IRepositories } from '../utils/interfaces/repository/repositories.inter
 // Open/closed principle, Não! Eu não posso adicionar novos repositórios sem precisar alterar essa classe. Teoricamente eu preciso adicionar um novo atributo.
 class Repositories implements IRepositories {
     PeopleRepository: Repository<People>
+    DoctorRepository: Repository<Doctor>
 
     constructor(DataSource: DataSource) {
         this.PeopleRepository = DataSource.getRepository(People)
+        this.DoctorRepository = DataSource.getRepository(Doctor)
     }
 }
 
