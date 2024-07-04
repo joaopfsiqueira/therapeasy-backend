@@ -1,22 +1,22 @@
 import { z } from 'zod'
 
 export const PeopleSchema = z.object({
-    username: z.string({
-        required_error: 'Username is required',
-        invalid_type_error: 'Username must be a string',
-    }),
+    // username: z.string({
+    //     required_error: 'Username is required',
+    //     invalid_type_error: 'Username must be a string',
+    // }),
     nome: z.string({
         required_error: 'Nome is required',
         invalid_type_error: 'Nome must be a string',
     }),
-    password: z.string({
-        required_error: 'Password is required',
-        invalid_type_error: 'Password must be a string',
-    }),
-    email: z.string({
-        required_error: 'Email is required',
-        invalid_type_error: 'Email must be a string',
-    }),
+    // password: z.string({
+    //     required_error: 'Password is required',
+    //     invalid_type_error: 'Password must be a string',
+    // }),
+    // email: z.string({
+    //     required_error: 'Email is required',
+    //     invalid_type_error: 'Email must be a string',
+    // }),
     cpf: z
         .string({
             required_error: 'CPF is required',

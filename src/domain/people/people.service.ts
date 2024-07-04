@@ -1,15 +1,15 @@
 import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
-import { IUserService } from '../../utils/interfaces/people/people.service.interface'
-import { Users } from './people.entity'
+import { IPeopleService } from '../../utils/interfaces/people/people.service.interface'
+import { People } from './people.entity'
 import * as bcrypt from 'bcrypt'
 
-class UserService implements IUserService {
+class UserService implements IPeopleService {
     constructor(private repositories: IRepositories) {}
 
-    async create(body: Users): Promise<Users> {
+    async create(body: People): Promise<People> {
         try {
-            body.password = await bcrypt.hash(body.password, 8)
-            return await this.repositories.UserRepository.save(body)
+            // body.password = await bcrypt.hash(body.password, 8)
+            return await this.repositories.PeopleRepository.save(body)
         } catch (error) {
             if (error instanceof Error) {
                 throw new Error(error.message)
@@ -19,10 +19,10 @@ class UserService implements IUserService {
         }
     }
 
-    async getUserInformation(username: string): Promise<Users> {
-        const user = await this.repositories.UserRepository.findOne({
+    async getUserInformation(cpf: string): Promise<People> {
+        const user = await this.repositories.PeopleRepository.findOne({
             where: {
-                username: username,
+                cpf: cpf,
             },
         })
 
