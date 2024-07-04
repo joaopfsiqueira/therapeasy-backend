@@ -8,7 +8,6 @@ export class Doctor {
         this.crm = crm
     }
 
-    @Index('id_idp')
     @PrimaryGeneratedColumn({ name: 'id_person', type: 'int' })
     @OneToOne(() => People, (people) => people.id)
     @JoinColumn({ name: 'id_person' })
