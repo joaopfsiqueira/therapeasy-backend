@@ -3,7 +3,7 @@ import { IPeopleService } from '../../utils/interfaces/people/people.service.int
 import { People } from './people.entity'
 import * as bcrypt from 'bcrypt'
 
-class UserService implements IPeopleService {
+class PeopleService implements IPeopleService {
     constructor(private repositories: IRepositories) {}
 
     async create(body: People): Promise<People> {
@@ -34,4 +34,4 @@ class UserService implements IPeopleService {
     }
 }
 
-export default UserService
+export default PeopleService
