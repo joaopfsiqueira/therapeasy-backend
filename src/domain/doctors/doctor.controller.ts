@@ -17,7 +17,8 @@ class DoctorController implements IController {
     }
 
     private initializeRouter(): void {
-        this.router.post(`${this.basePath}`, this.AuthMiddleware.AuthToken.bind(this), this.create.bind(this))
+        // this.router.post(`${this.basePath}`, this.AuthMiddleware.AuthToken.bind(this), this.create.bind(this))
+        this.router.post(`${this.basePath}`, this.create.bind(this))
     }
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
