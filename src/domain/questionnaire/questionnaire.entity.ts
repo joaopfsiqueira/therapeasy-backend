@@ -1,0 +1,35 @@
+import { Entity, PrimaryGeneratedColumn, Column, Index, OneToOne, JoinColumn } from 'typeorm'
+import { People } from '../people/people.entity'
+
+@Entity()
+export class Questionnaire {
+    constructor(id_person: number, q_hour: Date, value: number, answered: boolean, week: number) {
+        this.id_person = id_person
+        this.q_hour = q_hour
+        this.value = value
+        this.answered = answered
+        this.week = week
+    }
+
+    @Index('id_idx')
+    @PrimaryGeneratedColumn('increment')
+    id: number = 0
+
+    @Index('idperson_idx', { unique: false })
+    @OneToOne(() => People, (person) => person.id)
+    @JoinColumn({ name: 'id_person' })
+    id_person: number
+
+    @Column({ name: 'week', type: 'int' })
+    week: number
+
+    @Column({ name: 'value', type: 'int' })
+    value: number
+
+    @Index(['id_person', 'q_hour'], { unique: false })
+    @Column({ type: 'datetime' })
+    q_hour: Date
+
+    @Column({ name: 'answered', type: 'boolean', default: false })
+    answered: boolean
+}
