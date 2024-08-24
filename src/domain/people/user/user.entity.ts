@@ -3,17 +3,17 @@ import { Person } from '../person/person.entity'
 
 @Entity()
 export class User {
-    constructor(login: string, email: string, senha: string, id_pessoa: number) {
-        this.id_pessoa = id_pessoa
+    constructor(login: string, email: string, password: string, id_person: number) {
+        this.id_person = id_person
         this.login = login
         this.email = email
-        this.senha = senha
+        this.password = password
     }
 
     @PrimaryGeneratedColumn({ name: 'id_person', type: 'int' })
     @OneToOne(() => Person, (people) => people.id)
     @JoinColumn({ name: 'id_person' })
-    id_pessoa: number
+    id_person: number
 
     @Index('id_loginx')
     @Column({ name: 'login', type: 'varchar', length: 100, unique: true })
@@ -22,6 +22,6 @@ export class User {
     @Column({ name: 'email', type: 'varchar', length: 255, unique: true })
     email: string
 
-    @Column({ name: 'senha', type: 'varchar', length: 255 })
-    senha: string
+    @Column({ name: 'password', type: 'varchar', length: 255 })
+    password: string
 }
