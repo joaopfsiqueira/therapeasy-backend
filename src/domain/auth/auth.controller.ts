@@ -31,7 +31,7 @@ class AuthController implements IController {
             }
 
             const user = await this.service.login(_req.body)
-            const token = jwt.sign({ username: user.username }, process.env.SECRET_KEY, {
+            const token = jwt.sign({ login: user.login }, process.env.SECRET_KEY, {
                 expiresIn: '1h',
             })
             return res.status(Http.OK).json({ token })
@@ -39,7 +39,9 @@ class AuthController implements IController {
             // validando se error é uma instância de Error, para fazer o ternário abaixo e conseguir acessar as propriedades do erro, como error.message! Isso é uma das chatices desse typescript, é uma forma de explicitar o tipo do erro, para evitar erros de tipagem. No javascript normal não seria necessário fazer isso, só precisando fazer um res.status(Http.INTERNAL_SERVER_ERROR).send(error.message).
             const isError = error instanceof Error
 
-            return isError ? res.status(Http.INTERNAL_SERVER_ERROR).send(error.message) : res.status(Http.INTERNAL_SERVER_ERROR).send(String(error))
+            return isError
+                ? res.status(Http.INTERNAL_SERVER_ERROR).send(error.message)
+                : res.status(Http.INTERNAL_SERVER_ERROR).send(String(error))
         }
     }
 }

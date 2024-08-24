@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express'
 
 // criando interface para o retorno do "Data" mais abaixo no auth.middleware
 export interface TokenPayload {
-    username: string
+    login: string
     iat: number
     exp: number
 }
