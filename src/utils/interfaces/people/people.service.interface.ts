@@ -1,6 +1,6 @@
-import { People } from '../../../domain/people/people.entity'
+import { Person } from '../../../domain/person/person.entity'
 
-export interface IPeopleService {
-    create(body: People): Promise<People>
-    getUserInformation(username: string): Promise<People>
+export interface IPersonService {
+    create(body: Person): Promise<Person>
+    getUserInformation(username: string): Promise<Person>
 }

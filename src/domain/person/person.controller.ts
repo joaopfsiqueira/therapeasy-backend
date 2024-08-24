@@ -1,17 +1,17 @@
-import { PeopleSchema } from '../../utils/zod/people.zod'
+import { PersonSchema } from '../../utils/zod/people.zod'
 import { Request, Response, Router } from 'express'
 import { Http } from '../../utils/enum/http'
-import { IPeopleService } from '../../utils/interfaces/people/people.service.interface'
+import { IPersonService } from '../../utils/interfaces/people/people.service.interface'
 import { IController } from '../../utils/interfaces/controller.interface'
 
 import { ErrorZodFormat } from '../../utils/errors/zod.error'
 import { IAuthMiddleware } from '../../utils/interfaces/middleware/auth.middleware.interface'
 
-class PeopleController implements IController {
+class PersonController implements IController {
     public router: Router
     private readonly basePath = '/user'
 
-    constructor(private service: IPeopleService, private AuthMiddleware: IAuthMiddleware) {
+    constructor(private service: IPersonService, private AuthMiddleware: IAuthMiddleware) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
@@ -26,7 +26,7 @@ class PeopleController implements IController {
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
         try {
-            const user = await PeopleSchema.safeParseAsync(_req.body) //utilizando o safe parse porque o safeparse não da um throw no erro, ele retorna como mensagem e ai eu faço o que eu bem entender.
+            const user = await PersonSchema.safeParseAsync(_req.body) //utilizando o safe parse porque o safeparse não da um throw no erro, ele retorna como mensagem e ai eu faço o que eu bem entender.
             if (!user.success) {
                 const error = ErrorZodFormat(user.error.errors)
                 return res.status(Http.BAD_REQUEST).send(error)
@@ -59,4 +59,4 @@ class PeopleController implements IController {
     }
 }
 
-export default PeopleController
+export default PersonController

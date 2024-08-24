@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm'
 
 @Entity()
-export class People {
+export class Person {
     constructor(
         nome: string,
         cpf: string,
