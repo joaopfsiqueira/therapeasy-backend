@@ -1,14 +1,12 @@
-import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
-import { IPersonService } from '../../utils/interfaces/people/people.service.interface'
+import { IRepositories } from 'src/utils/interfaces/repository/repositories.interface'
+import { IPersonService } from 'src/utils/interfaces/people/people.service.interface'
 import { Person } from './person.entity'
-import * as bcrypt from 'bcrypt'
 
 class PersonService implements IPersonService {
     constructor(private repositories: IRepositories) {}
 
     async create(body: Person): Promise<Person> {
         try {
-            // body.password = await bcrypt.hash(body.password, 8)
             return await this.repositories.PersonRepository.save(body)
         } catch (error) {
             if (error instanceof Error) {
@@ -19,18 +17,27 @@ class PersonService implements IPersonService {
         }
     }
 
-    async getUserInformation(cpf: string): Promise<Person> {
-        const user = await this.repositories.PersonRepository.findOne({
-            where: {
-                cpf: cpf,
-            },
+    async getUserInformation(login: string): Promise<Person> {
+        const user = await this.repositories.UserRepository.findOne({
+            where: { login },
+            relations: ['id_person'], // Carregar a relação com a pessoa
         })
 
         if (!user) {
             throw new Error('Usuário não encontrado')
         }
 
-        return user
+        if (user && user.id_person) {
+            const person = await this.repositories.PersonRepository.findOne({
+                where: { id: user.id_person },
+            })
+
+            if (!person) {
+                throw new Error('Pessoa não encontrada')
+            }
+            return person // Retornar os dados da pessoa
+        }
+        throw new Error('Erro ao buscar informações do usuário')
     }
 }
 

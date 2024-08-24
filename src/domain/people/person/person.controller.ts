@@ -1,11 +1,10 @@
-import { PersonSchema } from '../../utils/zod/people.zod'
+import { PersonSchema } from 'src/utils/zod/people.zod'
 import { Request, Response, Router } from 'express'
-import { Http } from '../../utils/enum/http'
-import { IPersonService } from '../../utils/interfaces/people/people.service.interface'
-import { IController } from '../../utils/interfaces/controller.interface'
-
-import { ErrorZodFormat } from '../../utils/errors/zod.error'
-import { IAuthMiddleware } from '../../utils/interfaces/middleware/auth.middleware.interface'
+import { Http } from 'src/utils/enum/http'
+import { IPersonService } from 'src/utils/interfaces/people/people.service.interface'
+import { IController } from 'src/utils/interfaces/controller.interface'
+import { ErrorZodFormat } from 'src/utils/errors/zod.error'
+import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 
 class PersonController implements IController {
     public router: Router
@@ -45,8 +44,8 @@ class PersonController implements IController {
 
     private async getUserInformation(_req: Request, res: Response): Promise<Response | Error> {
         try {
-            const username = _req.username //pegando o username que foi passado no middleware de autenticação
-            const userInformations = await this.service.getUserInformation(username)
+            const login = _req.login //pegando o login que foi passado no middleware de autenticação
+            const userInformations = await this.service.getUserInformation(login)
             return res.status(Http.OK).json(userInformations)
         } catch (error) {
             // validando se error é uma instância de Error, para fazer o ternário abaixo e conseguir acessar as propriedades do erro, como error.message! Isso é uma das chatices desse typescript, é uma forma de explicitar o tipo do erro, para evitar erros de tipagem. No javascript normal não seria necessário fazer isso, só precisando fazer um res.status(Http.INTERNAL_SERVER_ERROR).send(error.message).
