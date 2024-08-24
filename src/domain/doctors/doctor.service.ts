@@ -1,13 +1,13 @@
-import { IUserService } from '../../utils/interfaces/user/user.service.interface'
+import { IDoctorService } from '../../utils/interfaces/doctor/doctor.service.interface'
 import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
-import { User } from './user.entity'
+import { Doctor } from './doctor.entity'
 
-class UserService implements IUserService {
+class DoctorService implements IDoctorService {
     constructor(private repositories: IRepositories) {}
 
-    async create(body: User): Promise<User> {
+    async create(body: Doctor): Promise<Doctor> {
         try {
-            return await this.repositories.UserRepository.save(body)
+            return await this.repositories.DoctorRepository.save(body)
         } catch (error) {
             if (error instanceof Error) {
                 throw new Error(error.message)
@@ -18,4 +18,4 @@ class UserService implements IUserService {
     }
 }
 
-export default UserService
+export default DoctorService

@@ -2,12 +2,18 @@ import 'dotenv/config' //responsável por importar as variáveis de ambiente do 
 import HelloWorldController from './controller/helloworld.controller'
 import App from './app'
 import AppDataSource from './data-source'
-import UserService from './domain/user/user.service'
-import UserController from './domain/user/user.controller'
+import PeopleService from './domain/people/people.service'
+import PeopleController from './domain/people/people.controller'
 import AuthService from './domain/auth/auth.service'
 import AuthController from './domain/auth/auth.controller'
 import Repositories from './repository/repositories'
 import AuthMiddleware from './middleware/auth.middleware'
+import DoctorService from './domain/doctors/doctor.service'
+import DoctorController from './domain/doctors/doctor.controller'
+import UserController from './domain/user/user.controller'
+import UserService from './domain/user/user.service'
+import PatientsController from './domain/patients/patients.controller'
+import PatientsService from './domain/patients/patients.service'
 
 /* Main Function, responsável por juntar TODAS as abstrações (instâncias) e usa-las em seus serviços que esperam receber uma instância de uma classe abstrata.
 
@@ -40,14 +46,24 @@ export async function server(): Promise<void> {
     /**
      * Inicilização das Services
      */
-    const userService = new UserService(repositories)
+    const peopleService = new PeopleService(repositories)
     const authService = new AuthService(repositories)
+    const doctorService = new DoctorService(repositories)
+    const userService = new UserService(repositories)
+    const patientsService = new PatientsService(repositories)
 
     /**
      * Inicialização das Controllers
      */
-    const controllers = [new HelloWorldController(), new UserController(userService, authMiddleware), new AuthController(authService)]
-    // const userController = new UserController(userService);
+    const controllers = [
+        new HelloWorldController(),
+        new PeopleController(peopleService, authMiddleware),
+        new AuthController(authService),
+        new DoctorController(doctorService, authMiddleware),
+        new UserController(userService, authMiddleware),
+        new PatientsController(patientsService, authMiddleware),
+    ]
+    // const userController = new PeopleController(peopleService);
 
     /**
      * Inicialização do Servidor, o servidor deve receber as controllers a serem carregadas

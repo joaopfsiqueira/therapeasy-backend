@@ -1,6 +1,6 @@
 import { IAuthService } from '../../utils/interfaces/auth/auth.service.interface'
 import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
-import { Users } from '../user/user.entity'
+import { Users } from '../people/people.entity'
 import bcrypt from 'bcrypt'
 
 export type AuthBody = {

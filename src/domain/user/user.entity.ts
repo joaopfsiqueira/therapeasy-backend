@@ -1,70 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, Index, OneToOne, JoinColumn } from 'typeorm'
+import { People } from '../people/people.entity'
 
 @Entity()
-export class Users {
-    constructor(
-        username: string,
-        nome: string,
-        password: string,
-        email: string,
-        cpf: string,
-        gender: string,
-        type: string,
-        birth_date: Date,
-        created_at: Date,
-        updated_at: Date,
-        active: boolean
-    ) {
-        this.username = username
-        this.nome = nome
-        this.password = password
+export class User {
+    constructor(login: string, email: string, senha: string, id_pessoa: number) {
+        this.id_pessoa = id_pessoa
+        this.login = login
         this.email = email
-        this.cpf = cpf
-        this.gender = gender
-        this.type = type
-        this.birth_date = birth_date
-        this.created_at = created_at
-        this.updated_at = updated_at
-        this.active = active
+        this.senha = senha
     }
 
-    @Index('id_idx')
-    @PrimaryGeneratedColumn('increment')
-    id: number = 0
+    @PrimaryGeneratedColumn({ name: 'id_person', type: 'int' })
+    @OneToOne(() => People, (people) => people.id)
+    @JoinColumn({ name: 'id_person' })
+    id_pessoa: number
 
-    @Index('username_idx', { unique: true })
-    @Column({ name: 'username', type: 'varchar', length: 50 })
-    username: string
+    @Index('id_loginx')
+    @Column({ name: 'login', type: 'varchar', length: 100, unique: true })
+    login: string
 
-    @Column({ name: 'nome', type: 'varchar', length: 255 })
-    nome: string
-
-    @Column({ type: 'varchar', length: 255 })
-    password: string
-
-    @Index('email_idx', { unique: true })
-    @Column({ name: 'email', type: 'varchar', length: 100 })
+    @Column({ name: 'email', type: 'varchar', length: 255, unique: true })
     email: string
 
-    @Index('cpf_idx', { unique: true })
-    @Column({ name: 'cpf', type: 'varchar', length: 11 })
-    cpf: string
-
-    @Column({ name: 'gender', type: 'varchar', length: 9 })
-    gender: string
-
-    @Column({ name: 'type', type: 'varchar', length: 15, nullable: true })
-    type: string
-
-    @Column({ type: 'datetime' })
-    birth_date: Date
-
-    @Column({ name: 'created_at', type: 'datetime', precision: 0, nullable: false })
-    created_at: Date
-
-    @Column({ name: 'updated_at', type: 'datetime', precision: 0, nullable: false })
-    updated_at: Date
-
-    @Column({ name: 'active', type: 'boolean', default: true })
-    active: boolean
+    @Column({ name: 'senha', type: 'varchar', length: 255 })
+    senha: string
 }
