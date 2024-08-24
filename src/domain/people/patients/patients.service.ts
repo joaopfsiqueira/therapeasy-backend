@@ -1,5 +1,5 @@
-import { IPatientsService } from '../../utils/interfaces/patients/patients.service.interface'
-import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
+import { IPatientsService } from '../../../utils/interfaces/patients/patients.service.interface'
+import { IRepositories } from '../../../utils/interfaces/repository/repositories.interface'
 import { Patients } from './patients.entity'
 
 class PatientsService implements IPatientsService {

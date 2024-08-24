@@ -1,9 +1,9 @@
 import 'reflect-metadata' // serve para atualizar os metadados da tabela.
 import { DataSource } from 'typeorm'
-import { Person } from './domain/person/person.entity'
-import { Doctor } from './domain/doctors/doctor.entity'
-import { User } from './domain/user/user.entity'
-import { Patients } from './domain/patients/patients.entity'
+import { Person } from './domain/people/person/person.entity'
+import { Doctor } from './domain/people/doctors/doctor.entity'
+import { User } from './domain/people/user/user.entity'
+import { Patients } from './domain/people/patients/patients.entity'
 
 class AppDataSource {
     DataSource: DataSource

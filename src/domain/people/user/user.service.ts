@@ -1,5 +1,5 @@
-import { IUserService } from '../../utils/interfaces/user/user.service.interface'
-import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
+import { IUserService } from '../../../utils/interfaces/user/user.service.interface'
+import { IRepositories } from '../../../utils/interfaces/repository/repositories.interface'
 import { User } from './user.entity'
 
 class UserService implements IUserService {

@@ -1,16 +1,16 @@
 import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
-import { Http } from '../../utils/enum/http'
+import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IUserService } from 'src/utils/interfaces/user/user.service.interface'
-import { UserSchema } from 'src/utils/zod/user.zod'
+import { IPatientsService } from 'src/utils/interfaces/patients/patients.service.interface'
+import { PatientsSchema } from 'src/utils/zod/patients.zod'
 import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 
-class UserController implements IController {
+class PatientsController implements IController {
     public router: Router
-    private readonly basePath = '/user'
+    private readonly basePath = '/patients'
 
-    constructor(private service: IUserService, private AuthMiddleware: IAuthMiddleware) {
+    constructor(private service: IPatientsService, private AuthMiddleware: IAuthMiddleware) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
@@ -23,13 +23,13 @@ class UserController implements IController {
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
         try {
-            const doctor = await UserSchema.safeParseAsync(_req.body)
+            const doctor = await PatientsSchema.safeParseAsync(_req.body)
             if (!doctor.success) {
                 const error = ErrorZodFormat(doctor.error.errors)
                 return res.status(Http.BAD_REQUEST).send(error)
             }
             await this.service.create(_req.body)
-            return res.status(Http.OK).send('User created with success!')
+            return res.status(Http.OK).send('Doctor created with success!')
         } catch (error) {
             const isError = error instanceof Error
 
@@ -40,4 +40,4 @@ class UserController implements IController {
     }
 }
 
-export default UserController
+export default PatientsController

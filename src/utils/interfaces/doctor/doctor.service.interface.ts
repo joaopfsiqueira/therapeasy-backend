@@ -1,4 +1,4 @@
-import { Doctor } from 'src/domain/doctors/doctor.entity'
+import { Doctor } from '../../../domain/people/doctors/doctor.entity'
 
 export interface IDoctorService {
     create(body: Doctor): Promise<Doctor>

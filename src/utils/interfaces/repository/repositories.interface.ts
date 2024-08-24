@@ -1,6 +1,6 @@
-import { User } from 'src/domain/user/user.entity'
-import { Doctor } from '../../../domain/doctors/doctor.entity'
-import { Person } from '../../../domain/person/person.entity'
+import { User } from 'src/domain/people/user/user.entity'
+import { Doctor } from 'src/domain/people/doctors/doctor.entity'
+import { Person } from 'src/domain/people/person/person.entity'
 import { Repository } from 'typeorm'
 
 export interface IRepositories {
