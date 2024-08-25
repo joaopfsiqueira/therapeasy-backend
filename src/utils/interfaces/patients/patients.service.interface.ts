@@ -1,5 +1,5 @@
-import { Patients } from 'src/domain/people/patients/patients.entity'
+import { Patient } from 'src/domain/people/patients/patient.entity'
 
-export interface IPatientsService {
-    create(body: Patients): Promise<Patients>
+export interface IPatientService {
+    create(body: Patient): Promise<Patient>
 }

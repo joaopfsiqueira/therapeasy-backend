@@ -2,15 +2,15 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IPatientsService } from 'src/utils/interfaces/patients/patients.service.interface'
-import { PatientsSchema } from 'src/utils/zod/patients.zod'
+import { IPatientService } from 'src/utils/interfaces/patients/patients.service.interface'
+import { PatientSchema } from 'src/utils/zod/patients.zod'
 import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 
-class PatientsController implements IController {
+class PatientController implements IController {
     public router: Router
     private readonly basePath = '/patients'
 
-    constructor(private service: IPatientsService, private AuthMiddleware: IAuthMiddleware) {
+    constructor(private service: IPatientService, private AuthMiddleware: IAuthMiddleware) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
@@ -23,13 +23,13 @@ class PatientsController implements IController {
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
         try {
-            const doctor = await PatientsSchema.safeParseAsync(_req.body)
-            if (!doctor.success) {
-                const error = ErrorZodFormat(doctor.error.errors)
+            const pacient = await PatientSchema.safeParseAsync(_req.body)
+            if (!pacient.success) {
+                const error = ErrorZodFormat(pacient.error.errors)
                 return res.status(Http.BAD_REQUEST).send(error)
             }
             await this.service.create(_req.body)
-            return res.status(Http.OK).send('Doctor created with success!')
+            return res.status(Http.OK).send('Pacient created with success!')
         } catch (error) {
             const isError = error instanceof Error
 
@@ -40,4 +40,4 @@ class PatientsController implements IController {
     }
 }
 
-export default PatientsController
+export default PatientController

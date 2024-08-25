@@ -3,7 +3,7 @@ import { DataSource } from 'typeorm'
 import { Person } from './domain/people/person/person.entity'
 import { Doctor } from './domain/people/doctors/doctor.entity'
 import { User } from './domain/people/user/user.entity'
-import { Patients } from './domain/people/patients/patients.entity'
+import { Patient } from './domain/people/patients/patient.entity'
 
 class AppDataSource {
     DataSource: DataSource
@@ -18,7 +18,7 @@ class AppDataSource {
             database: process.env.DS_DATABASE,
             synchronize: true,
             logging: false,
-            entities: [Person, Doctor, User, Patients],
+            entities: [Person, Doctor, User, Patient],
             migrations: [],
             subscribers: [],
         })

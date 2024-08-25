@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const PatientsSchema = z.object({
+export const PatientSchema = z.object({
     id_person: z.number({
         required_error: 'Id Person is required',
         invalid_type_error: 'Id Person must be a number',

@@ -1,11 +1,11 @@
-import { IPatientsService } from '../../../utils/interfaces/patients/patients.service.interface'
+import { IPatientService } from '../../../utils/interfaces/patients/patients.service.interface'
 import { IRepositories } from '../../../utils/interfaces/repository/repositories.interface'
-import { Patients } from './patients.entity'
+import { Patient } from './patient.entity'
 
-class PatientsService implements IPatientsService {
+class PatientService implements IPatientService {
     constructor(private repositories: IRepositories) {}
 
-    async create(body: Patients): Promise<Patients> {
+    async create(body: Patient): Promise<Patient> {
         try {
             return await this.repositories.DoctorRepository.save(body)
         } catch (error) {
@@ -18,4 +18,4 @@ class PatientsService implements IPatientsService {
     }
 }
 
-export default PatientsService
+export default PatientService

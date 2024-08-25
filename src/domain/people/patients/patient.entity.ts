@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, Index, OneToOne, JoinColumn } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, Index, OneToOne, JoinColumn, ManyToOne } from 'typeorm'
 import { Person } from '../person/person.entity'
 import { Doctor } from '../doctors/doctor.entity'
 
 @Entity()
-export class Patients {
+export class Patient {
     constructor(id_medico: number, id_pessoa: number) {
         this.id_pessoa = id_pessoa
         this.id_medico = id_medico
@@ -19,7 +19,7 @@ export class Patients {
     id_pessoa: number
 
     @Column({ name: 'id_doctor', type: 'int' })
-    @OneToOne(() => Doctor, (doctor) => doctor.id)
+    @ManyToOne(() => Doctor, (doctor) => doctor.id)
     @JoinColumn({ name: 'id_doctor' })
     id_medico: number
 }
