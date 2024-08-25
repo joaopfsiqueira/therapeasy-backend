@@ -3,10 +3,10 @@ import { Person } from '../../people/person/person.entity'
 
 @Entity()
 export class Questionnaire {
-    constructor(id_person: number, q_hour: Date, value: number, answered: boolean, week: number) {
+    constructor(id_person: number, q_hour: Date, weigth: number, answered: boolean, week: number) {
         this.id_person = id_person
         this.q_hour = q_hour
-        this.value = value
+        this.weigth = weigth
         this.answered = answered
         this.week = week
     }
@@ -23,8 +23,8 @@ export class Questionnaire {
     @Column({ name: 'week', type: 'int' })
     week: number
 
-    @Column({ name: 'value', type: 'int' })
-    value: number
+    @Column({ name: 'weigth', type: 'int' })
+    weigth: number
 
     @Index(['id_person', 'q_hour'], { unique: false })
     @Column({ type: 'datetime' })
