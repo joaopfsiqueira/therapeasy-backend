@@ -1,4 +1,4 @@
-import { IUserService } from '../../../utils/interfaces/user/user.service.interface'
+import { IUserService } from '../../../utils/interfaces/people/user/user.service.interface'
 import { IRepositories } from '../../../utils/interfaces/repository/repositories.interface'
 import { User } from './user.entity'
 import * as bcrypt from 'bcrypt'

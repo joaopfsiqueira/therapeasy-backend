@@ -1,5 +1,5 @@
 import { IRepositories } from 'src/utils/interfaces/repository/repositories.interface'
-import { IPersonService } from 'src/utils/interfaces/people/people.service.interface'
+import { IPersonService } from 'src/utils/interfaces/people/person/person.service.interface'
 import { Person } from './person.entity'
 
 class PersonService implements IPersonService {

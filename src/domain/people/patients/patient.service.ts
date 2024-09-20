@@ -1,4 +1,4 @@
-import { IPatientService } from '../../../utils/interfaces/patients/patients.service.interface'
+import { IPatientService } from '../../../utils/interfaces/people/patients/patients.service.interface'
 import { IRepositories } from '../../../utils/interfaces/repository/repositories.interface'
 import { Patient } from './patient.entity'
 

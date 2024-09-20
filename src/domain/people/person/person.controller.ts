@@ -1,7 +1,7 @@
 import { PersonSchema } from 'src/utils/zod/people.zod'
 import { Request, Response, Router } from 'express'
 import { Http } from 'src/utils/enum/http'
-import { IPersonService } from 'src/utils/interfaces/people/people.service.interface'
+import { IPersonService } from 'src/utils/interfaces/people/person/person.service.interface'
 import { IController } from 'src/utils/interfaces/controller.interface'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'

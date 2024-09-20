@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IUserService } from 'src/utils/interfaces/user/user.service.interface'
+import { IUserService } from 'src/utils/interfaces/people/user/user.service.interface'
 import { UserSchema } from 'src/utils/zod/user.zod'
 import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 
