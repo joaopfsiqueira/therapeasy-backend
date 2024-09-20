@@ -1,10 +1,14 @@
-import { User } from 'src/domain/user/user.entity'
-import { Doctor } from '../../../domain/doctors/doctor.entity'
-import { People } from '../../../domain/people/people.entity'
+import { User } from 'src/domain/people/user/user.entity'
+import { Doctor } from 'src/domain/people/doctors/doctor.entity'
+import { Person } from 'src/domain/people/person/person.entity'
+import { Patient } from 'src/domain/people/patients/patient.entity'
 import { Repository } from 'typeorm'
+import { Questionnaire } from 'src/domain/questions/questionnaire/questionnaire.entity'
 
 export interface IRepositories {
-    PeopleRepository: Repository<People>
+    PersonRepository: Repository<Person>
     DoctorRepository: Repository<Doctor>
     UserRepository: Repository<User>
+    PatientRepository: Repository<Patient>
+    QuestionnaireRepository: Repository<Questionnaire>
 }

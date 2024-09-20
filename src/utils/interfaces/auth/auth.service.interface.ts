@@ -1,6 +1,6 @@
-import { Users } from '../../../domain/people/people.entity'
+import { User } from '../../../domain/people/user/user.entity'
 import { AuthBody } from '../../../domain/auth/auth.service'
 
 export interface IAuthService {
-    login(body: AuthBody): Promise<Users>
+    login(body: AuthBody): Promise<User>
 }

@@ -16,9 +16,9 @@ class AuthMiddleware implements IAuthMiddleware {
 
         try {
             const data = jwt.verify(token, process.env.SECRET_KEY)
-            const { username } = data as TokenPayload
+            const { login } = data as TokenPayload
 
-            _req.username = username // atribuindo ao atributo criado dentro de @types express manualmente o username que foi extraido do token, fazendo ser acessado em qualquer lugar da aplicação que tenha acesso ao request. Vai ser util nas rotas.
+            _req.login = login // atribuindo ao atributo criado dentro de @types express manualmente o username que foi extraido do token, fazendo ser acessado em qualquer lugar da aplicação que tenha acesso ao request. Vai ser util nas rotas.
             next()
         } catch (error) {
             // validando se error é uma instância de Error, para fazer o ternário abaixo e conseguir acessar as propriedades do erro, como error.message! Isso é uma das chatices desse typescript, é uma forma de explicitar o tipo do erro, para evitar erros de tipagem. No javascript normal não seria necessário fazer isso, só precisando fazer um res.status(Http.INTERNAL_SERVER_ERROR).send(error.message).

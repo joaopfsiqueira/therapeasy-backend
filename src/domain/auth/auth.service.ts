@@ -1,20 +1,20 @@
 import { IAuthService } from '../../utils/interfaces/auth/auth.service.interface'
 import { IRepositories } from '../../utils/interfaces/repository/repositories.interface'
-import { Users } from '../people/people.entity'
+import { User } from '../people/user/user.entity'
 import bcrypt from 'bcrypt'
 
 export type AuthBody = {
-    username: string
+    login: string
     password: string
 }
 
 class AuthService implements IAuthService {
     constructor(private repository: IRepositories) {}
-    async login(body: AuthBody): Promise<Users> {
+    async login(body: AuthBody): Promise<User> {
         try {
             const loginUser = await this.repository.UserRepository.findOne({
                 where: {
-                    username: body.username,
+                    login: body.login,
                 },
             })
 
