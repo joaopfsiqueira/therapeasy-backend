@@ -6,7 +6,7 @@ import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware
 import { IQuestionnaireService } from 'src/utils/interfaces/questions/questionnaire/questionnaire.service.interface'
 import { QuestionnaireSchema } from 'src/utils/zod/questions/questionnaire.zod'
 
-class PatientController implements IController {
+class QuestionnaireController implements IController {
     public router: Router
     private readonly basePath = '/questionnaire'
 
@@ -40,4 +40,4 @@ class PatientController implements IController {
     }
 }
 
-export default PatientController
+export default QuestionnaireController
