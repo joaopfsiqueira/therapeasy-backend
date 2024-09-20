@@ -3,7 +3,7 @@ import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
 import { IPatientService } from 'src/utils/interfaces/people/patients/patients.service.interface'
-import { PatientSchema } from 'src/utils/zod/patients.zod'
+import { PatientSchema } from 'src/utils/zod/people/patients.zod'
 import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 
 class PatientController implements IController {

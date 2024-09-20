@@ -3,7 +3,7 @@ import { Http } from '../../utils/enum/http'
 import { IController } from '../../utils/interfaces/controller.interface'
 import { IAuthService } from '../../utils/interfaces/auth/auth.service.interface'
 import * as jwt from 'jsonwebtoken'
-import { AuthSchema } from '../../utils/zod/auth.zod'
+import { AuthSchema } from '../../utils/zod/people/auth.zod'
 import { ErrorZodFormat } from '../../utils/errors/zod.error'
 
 class AuthController implements IController {

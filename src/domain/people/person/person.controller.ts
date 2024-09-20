@@ -1,4 +1,4 @@
-import { PersonSchema } from 'src/utils/zod/people.zod'
+import { PersonSchema } from 'src/utils/zod/people/person.zod'
 import { Request, Response, Router } from 'express'
 import { Http } from 'src/utils/enum/http'
 import { IPersonService } from 'src/utils/interfaces/people/person/person.service.interface'
