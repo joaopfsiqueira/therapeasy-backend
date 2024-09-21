@@ -5,6 +5,7 @@ import { Doctor } from 'src/domain/people/doctors/doctor.entity'
 import { User } from 'src/domain/people/user/user.entity'
 import { Patient } from 'src/domain/people/patients/patient.entity'
 import { Questionnaire } from 'src/domain/questions/questionnaire/questionnaire.entity'
+import { Topic } from 'src/domain/questions/topic/topic.entity'
 
 // single responsibility principle, essa classe instância e inicializa os repositórios
 // Dependency Inversion, não tem, não depende de abstrações.
@@ -17,6 +18,7 @@ class Repositories implements IRepositories {
     UserRepository: Repository<User>
     PatientRepository: Repository<Patient>
     QuestionnaireRepository: Repository<Questionnaire>
+    TopicRepository: Repository<Topic>
 
     constructor(DataSource: DataSource) {
         this.PersonRepository = DataSource.getRepository(Person)
@@ -24,6 +26,7 @@ class Repositories implements IRepositories {
         this.UserRepository = DataSource.getRepository(User)
         this.PatientRepository = DataSource.getRepository(Patient)
         this.QuestionnaireRepository = DataSource.getRepository(Questionnaire)
+        this.TopicRepository = DataSource.getRepository(Topic)
     }
 }
 
