@@ -5,6 +5,7 @@ import { Doctor } from './domain/people/doctors/doctor.entity'
 import { User } from './domain/people/user/user.entity'
 import { Patient } from './domain/people/patients/patient.entity'
 import { Questionnaire } from './domain/questions/questionnaire/questionnaire.entity'
+import { Topic } from './domain/questions/topic/topic.entity'
 
 class AppDataSource {
     DataSource: DataSource
@@ -19,7 +20,7 @@ class AppDataSource {
             database: process.env.DS_DATABASE,
             synchronize: true,
             logging: false,
-            entities: [Person, Doctor, User, Patient, Questionnaire],
+            entities: [Person, Doctor, User, Patient, Questionnaire, Topic],
             migrations: [],
             subscribers: [],
         })
