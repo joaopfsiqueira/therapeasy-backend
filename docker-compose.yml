@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
     therapy-easy:
         image: joaopfsiqueira/therapy-easy:latest
