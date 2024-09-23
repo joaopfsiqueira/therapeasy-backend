@@ -2,14 +2,14 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IQuestionnaireService } from 'src/utils/interfaces/questions/questionnaire/questionnaire.service.interface'
-import { QuestionnaireSchema } from 'src/utils/zod/questions/questionnaire.zod'
+import { IQuestionService } from 'src/utils/interfaces/questions/question/question.service.interface'
+import { QuestionSchema } from 'src/utils/zod/questions/question.zod'
 
-class QuestionnaireController implements IController {
+class QuestionController implements IController {
     public router: Router
-    private readonly basePath = '/questionnaire'
+    private readonly basePath = '/question'
 
-    constructor(private service: IQuestionnaireService) {
+    constructor(private service: IQuestionService) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
@@ -22,9 +22,9 @@ class QuestionnaireController implements IController {
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
         try {
-            const questionnaire = await QuestionnaireSchema.safeParseAsync(_req.body)
-            if (!questionnaire.success) {
-                const error = ErrorZodFormat(questionnaire.error.errors)
+            const question = await QuestionSchema.safeParseAsync(_req.body)
+            if (!question.success) {
+                const error = ErrorZodFormat(question.error.errors)
                 return res.status(Http.BAD_REQUEST).send(error)
             }
             await this.service.create(_req.body)
@@ -39,4 +39,4 @@ class QuestionnaireController implements IController {
     }
 }
 
-export default QuestionnaireController
+export default QuestionController

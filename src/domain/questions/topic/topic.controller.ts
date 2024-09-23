@@ -2,7 +2,6 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 import { TopicSchema } from 'src/utils/zod/questions/topic.zod'
 import { ITopicService } from 'src/utils/interfaces/questions/topic/topic.service.interface'
 
@@ -10,14 +9,14 @@ class TopicController implements IController {
     public router: Router
     private readonly basePath = '/topic'
 
-    constructor(private service: ITopicService, private AuthMiddleware: IAuthMiddleware) {
+    constructor(private service: ITopicService) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
     }
 
     private initializeRouter(): void {
-        this.router.post(`${this.basePath}`, this.AuthMiddleware.AuthToken.bind(this), this.create.bind(this))
+        this.router.post(`${this.basePath}`, this.create.bind(this))
         // this.router.post(`${this.basePath}`, this.create.bind(this))
     }
 

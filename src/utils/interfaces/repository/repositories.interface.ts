@@ -5,6 +5,7 @@ import { Patient } from 'src/domain/people/patients/patient.entity'
 import { Repository } from 'typeorm'
 import { Questionnaire } from 'src/domain/questions/questionnaire/questionnaire.entity'
 import { Topic } from 'src/domain/questions/topic/topic.entity'
+import { Question } from 'src/domain/questions/question/question.entity'
 
 export interface IRepositories {
     PersonRepository: Repository<Person>
@@ -13,4 +14,5 @@ export interface IRepositories {
     PatientRepository: Repository<Patient>
     QuestionnaireRepository: Repository<Questionnaire>
     TopicRepository: Repository<Topic>
+    QuestionRepository: Repository<Question>
 }
