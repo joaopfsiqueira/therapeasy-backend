@@ -12,7 +12,7 @@ export class Doctor {
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
-    @PrimaryGeneratedColumn({ name: 'id_person', type: 'int' })
+    @Column({ name: 'id_person', type: 'int' })
     @OneToOne(() => Person, (person) => person.id)
     @JoinColumn({ name: 'id_person' })
     id_pessoa: number
