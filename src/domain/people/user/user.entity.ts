@@ -10,7 +10,10 @@ export class User {
         this.password = password
     }
 
-    @PrimaryGeneratedColumn({ name: 'id_person', type: 'int' })
+    @PrimaryGeneratedColumn('increment')
+    id: number = 0
+
+    @Column({ name: 'id_person', type: 'int' })
     @OneToOne(() => Person, (people) => people.id)
     @JoinColumn({ name: 'id_person' })
     id_person: number
