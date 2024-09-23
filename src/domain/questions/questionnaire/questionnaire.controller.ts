@@ -2,7 +2,6 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IAuthMiddleware } from 'src/utils/interfaces/middleware/auth.middleware.interface'
 import { IQuestionnaireService } from 'src/utils/interfaces/questions/questionnaire/questionnaire.service.interface'
 import { QuestionnaireSchema } from 'src/utils/zod/questions/questionnaire.zod'
 
@@ -10,14 +9,14 @@ class QuestionnaireController implements IController {
     public router: Router
     private readonly basePath = '/questionnaire'
 
-    constructor(private service: IQuestionnaireService, private AuthMiddleware: IAuthMiddleware) {
+    constructor(private service: IQuestionnaireService) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
     }
 
     private initializeRouter(): void {
-        this.router.post(`${this.basePath}`, this.AuthMiddleware.AuthToken.bind(this), this.create.bind(this))
+        this.router.post(`${this.basePath}`, this.create.bind(this))
         // this.router.post(`${this.basePath}`, this.create.bind(this))
     }
 
