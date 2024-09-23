@@ -20,7 +20,7 @@ class AppDataSource {
             database: process.env.DS_DATABASE,
             synchronize: true,
             logging: false,
-            entities: [Person, Doctor, User, Patient, Questionnaire, Topic],
+            entities: [Person, User, Questionnaire, Topic, Doctor, Patient],
             migrations: [],
             subscribers: [],
         })

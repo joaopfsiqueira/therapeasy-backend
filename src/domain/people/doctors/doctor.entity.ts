@@ -8,7 +8,6 @@ export class Doctor {
         this.crm = crm
     }
 
-    @Index('id_idx')
     @PrimaryGeneratedColumn('increment')
     id: number = 0
 
