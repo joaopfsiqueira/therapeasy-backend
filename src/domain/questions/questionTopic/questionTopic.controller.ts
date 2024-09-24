@@ -2,14 +2,14 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IQuestionService } from 'src/utils/interfaces/questions/question/question.service.interface'
 import { QuestionTopicSchema } from 'src/utils/zod/questions/questionTopic.zod'
+import { IQuestionTopicService } from 'src/utils/interfaces/questions/questionTopic/questionTopic.service.interface'
 
 class QuestionTopicController implements IController {
     public router: Router
     private readonly basePath = '/questionTopic'
 
-    constructor(private service: IQuestionService) {
+    constructor(private service: IQuestionTopicService) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
