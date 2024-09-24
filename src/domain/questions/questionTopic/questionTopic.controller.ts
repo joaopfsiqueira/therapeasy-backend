@@ -5,7 +5,7 @@ import { IController } from 'src/utils/interfaces/controller.interface'
 import { IQuestionService } from 'src/utils/interfaces/questions/question/question.service.interface'
 import { QuestionTopicSchema } from 'src/utils/zod/questions/questionTopic.zod'
 
-class PatientTopicController implements IController {
+class QuestionTopicController implements IController {
     public router: Router
     private readonly basePath = '/questionTopic'
 
@@ -39,4 +39,4 @@ class PatientTopicController implements IController {
     }
 }
 
-export default PatientTopicController
+export default QuestionTopicController
