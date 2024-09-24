@@ -2,7 +2,7 @@ import { IRepositories } from 'src/utils/interfaces/repository/repositories.inte
 import { OptionAnswer } from './optionAnswer.entity'
 import { IOptionAnswerService } from 'src/utils/interfaces/questions/optionAnswer/optionAnswer.service.interface'
 
-class OptionAnswerSerivce implements IOptionAnswerService {
+class OptionAnswerService implements IOptionAnswerService {
     constructor(private readonly repository: IRepositories) {}
 
     async create(body: OptionAnswer): Promise<OptionAnswer> {
@@ -18,4 +18,4 @@ class OptionAnswerSerivce implements IOptionAnswerService {
     }
 }
 
-export default OptionAnswerSerivce
+export default OptionAnswerService
