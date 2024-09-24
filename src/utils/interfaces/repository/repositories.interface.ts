@@ -9,6 +9,7 @@ import { Question } from 'src/domain/questions/question/question.entity'
 import { OptionAnswer } from 'src/domain/questions/optionAnswer/optionAnswer.entity'
 import { PatientTopic } from 'src/domain/questions/patientTopic/patientTopic.entity'
 import { QuestionTopic } from 'src/domain/questions/questionTopic/questionTopic.entity'
+import { Answer } from 'src/domain/questions/answer/answer.entity'
 
 export interface IRepositories {
     PersonRepository: Repository<Person>
@@ -21,4 +22,5 @@ export interface IRepositories {
     OptionAnswerRepository: Repository<OptionAnswer>
     PatientTopicRepository: Repository<PatientTopic>
     QuestionTopicRepository: Repository<QuestionTopic>
+    AnswerRepository: Repository<Answer>
 }

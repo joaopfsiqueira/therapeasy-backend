@@ -10,6 +10,7 @@ import { Question } from 'src/domain/questions/question/question.entity'
 import { OptionAnswer } from 'src/domain/questions/optionAnswer/optionAnswer.entity'
 import { PatientTopic } from 'src/domain/questions/patientTopic/patientTopic.entity'
 import { QuestionTopic } from 'src/domain/questions/questionTopic/questionTopic.entity'
+import { Answer } from 'src/domain/questions/answer/answer.entity'
 
 // single responsibility principle, essa classe instância e inicializa os repositórios
 // Dependency Inversion, não tem, não depende de abstrações.
@@ -27,6 +28,7 @@ class Repositories implements IRepositories {
     OptionAnswerRepository: Repository<OptionAnswer>
     PatientTopicRepository: Repository<PatientTopic>
     QuestionTopicRepository: Repository<QuestionTopic>
+    AnswerRepository: Repository<Answer>
 
     constructor(DataSource: DataSource) {
         this.PersonRepository = DataSource.getRepository(Person)
@@ -39,6 +41,7 @@ class Repositories implements IRepositories {
         this.OptionAnswerRepository = DataSource.getRepository(OptionAnswer)
         this.PatientTopicRepository = DataSource.getRepository(PatientTopic)
         this.QuestionTopicRepository = DataSource.getRepository(QuestionTopic)
+        this.AnswerRepository = DataSource.getRepository(Answer)
     }
 }
 
