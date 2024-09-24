@@ -6,6 +6,7 @@ import { Repository } from 'typeorm'
 import { Questionnaire } from 'src/domain/questions/questionnaire/questionnaire.entity'
 import { Topic } from 'src/domain/questions/topic/topic.entity'
 import { Question } from 'src/domain/questions/question/question.entity'
+import { OptionAnswer } from 'src/domain/questions/optionAnswer/optionAnswer.entity'
 
 export interface IRepositories {
     PersonRepository: Repository<Person>
@@ -15,4 +16,5 @@ export interface IRepositories {
     QuestionnaireRepository: Repository<Questionnaire>
     TopicRepository: Repository<Topic>
     QuestionRepository: Repository<Question>
+    OptionAnswerRepository: Repository<OptionAnswer>
 }

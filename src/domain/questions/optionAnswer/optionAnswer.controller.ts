@@ -2,14 +2,14 @@ import { Router, Request, Response } from 'express'
 import { ErrorZodFormat } from 'src/utils/errors/zod.error'
 import { Http } from '../../../utils/enum/http'
 import { IController } from 'src/utils/interfaces/controller.interface'
-import { IQuestionService } from 'src/utils/interfaces/questions/question/question.service.interface'
-import { QuestionSchema } from 'src/utils/zod/questions/question.zod'
+import { IOptionAnswerService } from 'src/utils/interfaces/questions/optionAnswer/optionAnswer.service.interface'
+import { OptionAnswerSchema } from 'src/utils/zod/questions/optionAnswer.zod'
 
-class QuestionController implements IController {
+class OptionAnswerController implements IController {
     public router: Router
-    private readonly basePath = '/question'
+    private readonly basePath = '/optionAnswer'
 
-    constructor(private service: IQuestionService) {
+    constructor(private service: IOptionAnswerService) {
         this.router = Router()
         this.initializeRouter()
         this.service = service
@@ -22,13 +22,13 @@ class QuestionController implements IController {
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
         try {
-            const question = await QuestionSchema.safeParseAsync(_req.body)
-            if (!question.success) {
-                const error = ErrorZodFormat(question.error.errors)
+            const optionAnswer = await OptionAnswerSchema.safeParseAsync(_req.body)
+            if (!optionAnswer.success) {
+                const error = ErrorZodFormat(optionAnswer.error.errors)
                 return res.status(Http.BAD_REQUEST).send(error)
             }
             await this.service.create(_req.body)
-            return res.status(Http.OK).send('Question created with success!')
+            return res.status(Http.OK).send('optionAnswer created with success!')
         } catch (error) {
             const isError = error instanceof Error
 
@@ -39,4 +39,4 @@ class QuestionController implements IController {
     }
 }
 
-export default QuestionController
+export default OptionAnswerController
