@@ -8,6 +8,7 @@ import { Topic } from 'src/domain/questions/topic/topic.entity'
 import { Question } from 'src/domain/questions/question/question.entity'
 import { OptionAnswer } from 'src/domain/questions/optionAnswer/optionAnswer.entity'
 import { PatientTopic } from 'src/domain/questions/patientTopic/patientTopic.entity'
+import { QuestionTopic } from 'src/domain/questions/questionTopic/questionTopic.entity'
 
 export interface IRepositories {
     PersonRepository: Repository<Person>
@@ -19,4 +20,5 @@ export interface IRepositories {
     QuestionRepository: Repository<Question>
     OptionAnswerRepository: Repository<OptionAnswer>
     PatientTopicRepository: Repository<PatientTopic>
+    QuestionTopicRepository: Repository<QuestionTopic>
 }
