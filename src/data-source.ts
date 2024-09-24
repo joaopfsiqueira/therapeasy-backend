@@ -8,6 +8,7 @@ import { Questionnaire } from './domain/questions/questionnaire/questionnaire.en
 import { Topic } from './domain/questions/topic/topic.entity'
 import { Question } from './domain/questions/question/question.entity'
 import { OptionAnswer } from './domain/questions/optionAnswer/optionAnswer.entity'
+import { PatientTopic } from './domain/questions/patientTopic/patientTopic.entity'
 
 class AppDataSource {
     DataSource: DataSource
@@ -22,7 +23,7 @@ class AppDataSource {
             database: process.env.DS_DATABASE,
             synchronize: true,
             logging: false,
-            entities: [Person, User, Questionnaire, Topic, Doctor, Patient, Question, OptionAnswer],
+            entities: [Person, User, Questionnaire, Topic, Doctor, Patient, Question, OptionAnswer, PatientTopic],
             migrations: [],
             subscribers: [],
         })
