@@ -20,5 +20,5 @@ export interface IRepositories {
     QuestionRepository: Repository<Question>
     OptionAnswerRepository: Repository<OptionAnswer>
     PatientTopicRepository: Repository<PatientTopic>
-    QuestionTopic: Repository<QuestionTopic>
+    QuestionTopicRepository: Repository<QuestionTopic>
 }

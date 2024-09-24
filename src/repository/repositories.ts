@@ -26,7 +26,7 @@ class Repositories implements IRepositories {
     QuestionRepository: Repository<Question>
     OptionAnswerRepository: Repository<OptionAnswer>
     PatientTopicRepository: Repository<PatientTopic>
-    QuestionTopic: Repository<QuestionTopic>
+    QuestionTopicRepository: Repository<QuestionTopic>
 
     constructor(DataSource: DataSource) {
         this.PersonRepository = DataSource.getRepository(Person)
@@ -38,7 +38,7 @@ class Repositories implements IRepositories {
         this.QuestionRepository = DataSource.getRepository(Question)
         this.OptionAnswerRepository = DataSource.getRepository(OptionAnswer)
         this.PatientTopicRepository = DataSource.getRepository(PatientTopic)
-        this.QuestionTopic = DataSource.getRepository(QuestionTopic)
+        this.QuestionTopicRepository = DataSource.getRepository(QuestionTopic)
     }
 }
 
