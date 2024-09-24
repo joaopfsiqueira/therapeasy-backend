@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const questionTopicSchema = z.object({
+export const QuestionTopicSchema = z.object({
     id_question: z.number({
         required_error: 'id_question is required',
         invalid_type_error: 'id_question must be a number',
