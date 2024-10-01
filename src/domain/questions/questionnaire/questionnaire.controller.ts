@@ -22,6 +22,7 @@ class QuestionnaireController implements IController {
 
     private async create(_req: Request, res: Response): Promise<Response | Error> {
         try {
+            console.log(_req.body)
             const questionnaire = await QuestionnaireSchema.safeParseAsync(_req.body)
             if (!questionnaire.success) {
                 const error = ErrorZodFormat(questionnaire.error.errors)

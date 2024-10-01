@@ -5,7 +5,7 @@ export const QuestionnaireSchema = z.object({
         required_error: 'Id Person is required',
         invalid_type_error: 'Id Person must be a number',
     }),
-    q_hour: z.date({
+    q_hour: z.string({
         required_error: 'q_hour is required',
         invalid_type_error: 'q_hour must be a Date',
     }),
